@@ -1,10 +1,13 @@
+// This build.gradle is for the 'app' subproject
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.1' // Use a recent stable Spring Boot version
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
-group = 'com.coderator' // Your project group
+// Ensure the group and version are consistent with the root project or defined here
+group = 'com.coderator'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '21' // Matches your chosen Java version
 
@@ -12,13 +15,20 @@ repositories {
     mavenCentral()
 }
 
+// Explicitly define the main class for the Spring Boot application
+springBoot {
+    mainClass = 'com.coderator.CoderatorApplication'
+}
+
 dependencies {
     // Spring Boot Starter Web for building web applications (REST APIs)
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // Spring Boot Starter Data JPA for database interaction (ORM)
-    // You'll need to add a specific database driver later (e.g., H2, PostgreSQL, MySQL)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // H2 Database for in-memory development (add this to resolve the DataSource error)
+    runtimeOnly 'com.h2database:h2'
 
     // Spring Boot Starter Security for authentication and authorization
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -34,8 +44,7 @@ dependencies {
     // DevTools for automatic restarts and live reload during development
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    // JUnit Jupiter for testing (since you chose JUnit 4, we'll keep it simple for now,
-    // but JUnit Jupiter is the modern standard for Spring Boot)
+    // JUnit Jupiter for testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test' // For testing security
 }
