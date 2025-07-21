@@ -26,6 +26,8 @@ dependencies {
     // Spring Boot Starter Web for building web applications (REST APIs)
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+
+
     // Spring Boot Starter Data JPA for database interaction (ORM)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
